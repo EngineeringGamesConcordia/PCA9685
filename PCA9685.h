@@ -53,12 +53,12 @@ public:
 	PCA9685(int, int);
 	virtual ~PCA9685();
 
+        I2C* getI2CDevice();
+
 	void setPWMFreq(int);
 	void setPWM(uint8_t, int, int);
 	void setPWM(uint8_t, int);
 	int getPWM(uint8_t);
-
-	void init(); // Write 0x01 to register 0x00
 
 private:
 	I2C *i2c;

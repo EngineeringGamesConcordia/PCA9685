@@ -48,11 +48,6 @@ PCA9685::~PCA9685() {
 	delete i2c;
 }
 
-//! Sets register 0x00 to 0x01 - PCA9685 responds to LED All Call I2C-bus address
-void PCA9685::init() {
-    i2c->write_byte(MODE1, 0x01);
-}
-
 //! Sets PCA9685 mode to 00
 void PCA9685::reset() {
 
@@ -105,6 +100,10 @@ int PCA9685::getPWM(uint8_t led){
 	ledval <<= 8;
 	ledval += i2c->read_byte(LED0_OFF_L + LED_MULTIPLYER * (led-1));
 	return ledval;
+}
+
+I2C* PCA9685::getI2CDevice(){
+    return i2c;
 }
 
 PCA9685::PCA9685() {
