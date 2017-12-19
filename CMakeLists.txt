@@ -6,6 +6,11 @@ add_library(PCA9685 SHARED
 )
 
 install(
+    TARGETS PCA9685
+    DESTINATION ${CMAKE_INSTALL_PREFIX}
+)
+
+install(
     FILES I2C.h PCA9685.h
     DESTINATION ${CMAKE_INSTALL_PREFIX}/include/
 )
