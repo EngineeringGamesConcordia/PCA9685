@@ -49,7 +49,6 @@ PCA9685::PCA9685(int bus, int address) {
 }
 
 PCA9685::~PCA9685() {
-    std::cout << "delete" << std::endl;	
     delete i2c;
 }
 
