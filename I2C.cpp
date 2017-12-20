@@ -79,9 +79,11 @@ uint8_t I2C::write_byte(uint8_t address, uint8_t data) {
 
     std::cout << "I2C::write_byte(" << (int)address << ", " << (int)data << ");" << std::endl;
 	if (fd != -1) {
+                std::cout << "eyy 1" << std::endl;
 		uint8_t buff[2];
 		buff[0] = address;
 		buff[1] = data;
+                std::cout << "eyy 2" << std::endl;
 		if (write(fd, buff, sizeof(buff)) != 2) {
                         std::cout << "err1" << std::endl;
 			syslog(LOG_ERR,
@@ -99,6 +101,7 @@ uint8_t I2C::write_byte(uint8_t address, uint8_t data) {
 		syslog(LOG_INFO, "Device File not available. Aborting write");
 		return (-1);
 	}
+        std::cout << "eyy 3" << std::endl;
 	return 0;
 }
 //! Open device file for I2C Device
