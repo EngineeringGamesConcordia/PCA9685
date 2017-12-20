@@ -49,7 +49,8 @@ PCA9685::PCA9685(int bus, int address) {
 }
 
 PCA9685::~PCA9685() {
-	delete i2c;
+    std::cout << "delete" << std::endl;	
+    delete i2c;
 }
 
 //! Sets PCA9685 mode to 00
@@ -64,7 +65,6 @@ void PCA9685::reset() {
  \param freq desired frequency. 40Hz to 1000Hz using internal 25MHz oscillator.
  */
 void PCA9685::setPWMFreq(int freq) {
-
 		uint8_t prescale_val = (CLOCK_FREQ / 4096 / freq)  - 1;
 		i2c->write_byte(MODE1, 0x10); //sleep
 		i2c->write_byte(PRE_SCALE, prescale_val); // multiplyer for PWM frequency
@@ -78,7 +78,7 @@ void PCA9685::setPWMFreq(int freq) {
  \param value 0-4095 value for PWM
  */
 void PCA9685::setPWM(uint8_t led, int value) {
-	setPWM(led, 0, value);
+    setPWM(led, 0, value);
 }
 //! PWM a single channel with custom on time
 /*!
@@ -87,15 +87,10 @@ void PCA9685::setPWM(uint8_t led, int value) {
  \param off_value 0-4095 value to turn off the pulse
  */
 void PCA9685::setPWM(uint8_t led, int on_value, int off_value) {
-                std::cout << "1" << std::endl;	
                 i2c->write_byte(LED0_ON_L + LED_MULTIPLYER * (led - 1), on_value & 0xFF);
-                std::cout << "2" << std::endl;
 		i2c->write_byte(LED0_ON_H + LED_MULTIPLYER * (led - 1), on_value >> 8);
-                std::cout << "3" << std::endl;
 		i2c->write_byte(LED0_OFF_L + LED_MULTIPLYER * (led - 1), off_value & 0xFF);
-                std::cout << "4" << std::endl;
 		i2c->write_byte(LED0_OFF_H + LED_MULTIPLYER * (led - 1), off_value >> 8);
-                std::cout << "5" << std::endl;
 }
 
 //! Get current PWM value
