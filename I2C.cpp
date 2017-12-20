@@ -78,6 +78,7 @@ uint8_t I2C::read_byte(uint8_t address) {
 uint8_t I2C::write_byte(uint8_t address, uint8_t data) {
 
     std::cout << "I2C::write_byte(" << (int)address << ", " << (int)data << ");" << std::endl;
+    std::cout << "ultimate eyy" << std::endl;
     std::cout << "fd: " << fd << std::endl;
 	if (fd != -1) {
                 std::cout << "eyy 1" << std::endl;
