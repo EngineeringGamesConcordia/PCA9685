@@ -77,7 +77,7 @@ uint8_t I2C::read_byte(uint8_t address) {
  */
 uint8_t I2C::write_byte(uint8_t address, uint8_t data) {
 
-    std::cout << "I2C::write_byte(" << address << ", " << data << ");" << std::endl;
+    std::cout << "I2C::write_byte(" << (int)address << ", " << (int)data << ");" << std::endl;
 	if (fd != -1) {
 		uint8_t buff[2];
 		buff[0] = address;
