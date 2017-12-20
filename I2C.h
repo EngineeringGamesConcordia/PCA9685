@@ -31,7 +31,7 @@
 class I2C {
 public:
 	I2C(int, int);
-	virtual ~I2C();
+	~I2C();
 	uint8_t dataBuffer[BUFFER_SIZE];
 	uint8_t read_byte(uint8_t);
 	uint8_t write_byte(uint8_t, uint8_t);
